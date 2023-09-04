@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ disease.name }} details{% endblock %}
+{% block title %}{{ disease.name|capfirst }} details{% endblock %}
 
 {% block content %}
     <div class="container mt-3">

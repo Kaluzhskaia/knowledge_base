@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ medication.name }} details{% endblock %}
+{% block title %}{{ medication.name|capfirst }} details{% endblock %}
 
 {% block content %}
 
     <div class="container mt-3">
         <!-- Medication Details -->
         <ul class="list-group mb-5">
-            <li class="list-group-item"><strong>Name:</strong> {{ medication.name }}</li>
+            <li class="list-group-item"><strong>Name:</strong> {{ medication.name|capfirst }}</li>
             <li class="list-group-item"><strong>Description:</strong> {{ medication.description }}</li>
             <li class="list-group-item"><strong>Released:</strong> {{ medication.released }}</li>
         </ul>

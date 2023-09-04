@@ -75,7 +75,7 @@
                     Diseases:
                     <ul>
                         {% for disease in medication.diseases.all %}
-                            <li><a href="{% url 'disease_details' disease.id %}">{{ disease.name }}</a></li>
+                            <li><a href="{% url 'disease_details' disease.id %}">{{ disease.name|capfirst }}</a></li>
                         {% endfor %}
                     </ul>
                 </li>

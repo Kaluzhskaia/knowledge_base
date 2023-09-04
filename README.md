@@ -40,7 +40,12 @@ This is a Django-based web application that serves as a health catalog for medic
     cd knowledge_base
     ```
 
-3. Activate the virtual environment:
+3. Create a virtual environment (optional):
+    ```bash
+    virtualenv venv
+    ```
+
+    Activate the virtual environment:
 
     - On Windows:
         ```bash

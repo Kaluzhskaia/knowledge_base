@@ -6,7 +6,7 @@
     <div class="container mt-3">
         <!-- Disease Details -->
         <ul class="list-group mb-5">
-            <li class="list-group-item"><strong>Disease name:</strong> {{ disease.name }}</li>
+            <li class="list-group-item"><strong>Disease name:</strong> {{ disease.name|capfirst }}</li>
         </ul>
 
         <!-- Medications used to treat the disease -->

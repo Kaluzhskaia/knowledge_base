@@ -17,7 +17,7 @@
         <ul class="list-group">
             {% for disease in medication.diseases.all %}
                 <li class="list-group-item">
-                    <a href="{% url 'disease_details' disease.id %}">{{ disease.name }}</a>
+                    <a href="{% url 'disease_details' disease.id %}">{{ disease.name|capfirst }}</a>
                 </li>
             {% endfor %}
         </ul>

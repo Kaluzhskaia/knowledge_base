@@ -32,7 +32,7 @@ This is a Django-based web application that serves as a health catalog for medic
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/health_catalog.git
+    git clone https://github.com/kaluzhskaia/health_catalog.git
     ```
 
 2. Navigate to the project directory:
@@ -69,7 +69,7 @@ This is a Django-based web application that serves as a health catalog for medic
 
 6. Load the data into the database:
     ```bash
-    python manage.py loaddata your_json_file.json
+    python manage.py load_health_data your_json_file.json
     ```
 
 7. Start the development server:

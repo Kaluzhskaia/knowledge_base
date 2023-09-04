@@ -37,7 +37,7 @@ This is a Django-based web application that serves as a health catalog for medic
 
 2. Navigate to the project directory:
     ```bash
-    cd health_catalog
+    cd knowledge_base
     ```
 
 3. Activate the virtual environment:

@@ -1,8 +1,10 @@
-from django.core.management.base import BaseCommand
-from health_catalog.models import Medication, Disease
 import json
 from datetime import datetime
 from typing import Any, Dict
+
+from django.core.management.base import BaseCommand
+
+from health_catalog.models import Medication, Disease
 
 
 class Command(BaseCommand):
@@ -38,16 +40,18 @@ class Command(BaseCommand):
             data = json.load(f)
 
         for medication_data in data['drugs']:
-            medication = Medication(
+            medication, created = Medication.objects.update_or_create(
                 uuid=medication_data['id'],
-                name=medication_data['name'],
-                description=medication_data['description'],
-                released=datetime.strptime(medication_data['released'], '%Y-%m-%d').date()
+                defaults={
+                    'name': medication_data['name'],
+                    'description': medication_data['description'],
+                    'released': datetime.strptime(medication_data['released'], '%Y-%m-%d').date()
+                }
             )
-            medication.save()
 
             for disease_name in medication_data['diseases']:
                 disease, created = Disease.objects.get_or_create(name=disease_name)
                 disease.medications.add(medication)
 
         self.stdout.write(self.style.SUCCESS('Successfully loaded data into the database'))
+

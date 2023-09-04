@@ -1,0 +1,88 @@
+# Health Knowledge Base
+
+## Description
+
+This is a Django-based web application that serves as a health catalog for medications and diseases. Users can browse the list of medications and diseases, see detailed information for each, and search using filters.
+
+## Features
+
+- List medications
+- Medication details, including diseases it can treat
+- List diseases
+- Disease details, including medications for treatment
+- Search medications and diseases using `django-filters`
+- Pagination for easier navigation
+
+## Technologies Used
+
+- Python 3.x
+- Django 3.x
+- SQLite (default Django database)
+- django-filters for search capabilities
+
+## Installation
+
+### Prerequisites
+
+- Python 3.x
+- Pip
+- Virtualenv (optional but recommended)
+
+### Setup
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/health_catalog.git
+    ```
+
+2. Navigate to the project directory:
+    ```bash
+    cd health_catalog
+    ```
+
+3. Create a virtual environment (optional):
+    ```bash
+    virtualenv venv
+    ```
+
+    Activate the virtual environment:
+
+    - On Windows:
+        ```bash
+        .\\venv\\Scripts\\activate
+        ```
+
+    - On macOS and Linux:
+        ```bash
+        source venv/bin/activate
+        ```
+
+4. Install the requirements:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+5. Run the migrations:
+    ```bash
+    python manage.py migrate
+    ```
+
+6. Load the data into the database:
+    ```bash
+    python manage.py loaddata your_json_file.json
+    ```
+
+7. Start the development server:
+    ```bash
+    python manage.py runserver
+    ```
+
+    The application should be available at `http://127.0.0.1:8000/`.
+
+## Usage
+
+- Navigate to `/medications/` to view a list of medications. You can use the search bar to filter the medications based on their name or description.
+- Navigate to `/diseases/` to view a list of diseases. Use the search bar to filter the diseases by name.
+- Pagination controls are available at the bottom of medication and disease lists.
+
+

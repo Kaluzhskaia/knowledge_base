@@ -32,7 +32,7 @@ This is a Django-based web application that serves as a health catalog for medic
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/kaluzhskaia/health_catalog.git
+    git clone https://github.com/kaluzhskaia/knowledge_base.git
     ```
 
 2. Navigate to the project directory:

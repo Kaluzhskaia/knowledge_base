@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ disease.name }} details{% endblock %}
+
+{% block content %}
+    <div class="container mt-3">
+        <!-- Disease Details -->
+        <ul class="list-group mb-5">
+            <li class="list-group-item"><strong>Disease name:</strong> {{ disease.name }}</li>
+        </ul>
+
+        <!-- Medications used to treat the disease -->
+        <h5>Related Medications:</h5>
+        <ul class="list-group">
+            {% for medication in disease.medications.all %}
+                <li class="list-group-item">
+                    <a href="{% url 'medication_details' medication.id %}">{{ medication.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

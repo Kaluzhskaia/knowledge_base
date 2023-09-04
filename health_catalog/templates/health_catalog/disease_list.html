@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block title %}Diseases{% endblock %}
+
+{% block content %}
+
+    <div class="container mt-3">
+
+        <!-- Search Form -->
+        <form method="get" class="d-flex">
+            {% for field in filter.form %}
+                <input type="text" class="form-control w-25" id="{{ field.id_for_label }}" name="{{ field.name }}"
+                       placeholder="Enter disease name" value="{{ field.value|default_if_none:'' }}">
+            {% endfor %}
+
+            <button type="submit" class="btn btn-outline-primary ms-2"><i class="bi bi-search"></i> Search</button>
+        </form>
+
+        <!-- Pagination: At the top -->
+        <div class="pagination mt-2">
+            {% if page_obj.paginator.num_pages > 1 %}
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <!-- First page -->
+                        <li class="page-item {% if page_obj.number == 1 %}disabled{% endif %}">
+                            <a class="page-link"
+                               {% if page_obj.number != 1 %}href="?{{ query_parameters }}&page=1"{% endif %}>First</a>
+                        </li>
+
+                        <!-- Previous page -->
+                        <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
+                            <a class="page-link"
+                               {% if page_obj.has_previous %}href="?{{ query_parameters }}&page={{ page_obj.previous_page_number }}"{% endif %}><</a>
+                        </li>
+
+                        <!-- Page numbers -->
+                        {% with start_page=page_obj.number|add:"-2" %}
+                            {% for i in page_obj.paginator.page_range %}
+                                {% if i >= start_page and i < start_page|add:"5" %}
+                                    <li class="page-item {% if page_obj.number == i %}active{% endif %}">
+                                        <a class="page-link" href="?{{ query_parameters }}&page={{ i }}">{{ i }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        {% endwith %}
+
+                        <!-- Next page -->
+                        <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
+                            <a class="page-link"
+                               {% if page_obj.has_next %}href="?{{ query_parameters }}&page={{ page_obj.next_page_number }}"{% endif %}>
+                                > </a>
+                        </li>
+
+                        <!-- Last page -->
+                        <li class="page-item {% if page_obj.number == page_obj.paginator.num_pages %}disabled{% endif %}">
+                            <a class="page-link"
+                               {% if page_obj.number != page_obj.paginator.num_pages %}href="?{{ query_parameters }}&page={{ page_obj.paginator.num_pages }}"{% endif %}>Last</a>
+                        </li>
+                    </ul>
+                </nav>
+            {% endif %}
+        </div>
+
+
+        <!-- Disease List -->
+        <ul class="list-group">
+            {% for disease in diseases %}
+                <li class="list-group-item">
+                    <strong class=""><i class="bi bi-virus small"></i> {{ disease.name|capfirst }}</strong><br>
+                    Treatments:
+                    <ul>
+                        {% for medication in disease.medications.all %}
+                            <li><a href="{% url 'medication_details' medication.id %}">{{ medication.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Pagination: At the bottom -->
+        <div class="pagination mt-2">
+            {% if page_obj.paginator.num_pages > 1 %}
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <!-- First page -->
+                        <li class="page-item {% if page_obj.number == 1 %}disabled{% endif %}">
+                            <a class="page-link"
+                               {% if page_obj.number != 1 %}href="?{{ query_parameters }}&page=1"{% endif %}>First</a>
+                        </li>
+
+                        <!-- Previous page -->
+                        <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
+                            <a class="page-link"
+                               {% if page_obj.has_previous %}href="?{{ query_parameters }}&page={{ page_obj.previous_page_number }}"{% endif %}><</a>
+                        </li>
+
+                        <!-- Page numbers -->
+                        {% with start_page=page_obj.number|add:"-2" %}
+                            {% for i in page_obj.paginator.page_range %}
+                                {% if i >= start_page and i < start_page|add:"5" %}
+                                    <li class="page-item {% if page_obj.number == i %}active{% endif %}">
+                                        <a class="page-link" href="?{{ query_parameters }}&page={{ i }}">{{ i }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        {% endwith %}
+
+                        <!-- Next page -->
+                        <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
+                            <a class="page-link"
+                               {% if page_obj.has_next %}href="?{{ query_parameters }}&page={{ page_obj.next_page_number }}"{% endif %}>
+                                > </a>
+                        </li>
+
+                        <!-- Last page -->
+                        <li class="page-item {% if page_obj.number == page_obj.paginator.num_pages %}disabled{% endif %}">
+                            <a class="page-link"
+                               {% if page_obj.number != page_obj.paginator.num_pages %}href="?{{ query_parameters }}&page={{ page_obj.paginator.num_pages }}"{% endif %}>Last</a>
+                        </li>
+                    </ul>
+                </nav>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

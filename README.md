@@ -83,7 +83,7 @@ This is a Django-based web application that serves as a health catalog for medic
 
 - Navigate to `/medications/` to view a list of medications. You can use the search bar to filter the medications based on their name or description.
 - Navigate to `/diseases/` to view a list of diseases. Use the search bar to filter the diseases by name.
-- Pagination controls are available at the bottom of medication and disease lists.
+- Pagination controls are available at the top and the bottom of medication and disease lists.
 
 ## Screenshots
 
